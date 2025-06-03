@@ -1,0 +1,1224 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaqueteExpress - Envíos Rápidos en Monterrey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS ACTUALIZADOS --- */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header */
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://crmwebinar.arcsona.com/wp-content/uploads/2016/08/BANNER-PAQUETE-EXPRESS-978X355-PX.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 60px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero h2 span {
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Services */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Quote Section */
+        .quote {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .quote h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .quote-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .form-group label i {
+            color: var(--secondary);
+            margin-right: 8px;
+        }
+        
+        .form-group input, 
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #ddd;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .autocomplete-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .autocomplete-item:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .quote-result {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--success);
+            color: white;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        /* Same Day Form */
+        .same-day-form {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .same-day-form h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Mapa */
+        #map {
+            height: 300px;
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        /* Proceso de pago */
+        .payment-section {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--secondary);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .payment-method.active {
+            border-color: var(--secondary);
+            background-color: #fff9f9;
+        }
+        
+        .spei-details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        /* Ticket de confirmación */
+        .confirmation-ticket {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .confirmation-ticket h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .ticket-header .logo {
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .ticket-details {
+            margin: 20px 0;
+        }
+        
+        .ticket-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ticket-row strong {
+            color: var(--dark);
+        }
+        
+        .ticket-message {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .ticket-actions {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Botones */
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-left: 8px;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        
+            .hero {
+                padding: 120px 0 80px;
+            }
+        
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .ticket-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- --- CONTENIDO HTML --- -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-truck-fast"></i>
+                <h1>Paquete<span>Express</span></h1>
+            </div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#cotizar">Cotizar</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>Envíos rápidos en <span>Monterrey</span></h2>
+            <p>Recibimos, almacenamos y entregamos tus paquetes en menos de 24 horas</p>
+            <a href="#cotizar" class="btn">¡Cotizar ahora! <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="grid-services">
+                <div class="service" id="same-day-btn">
+                    <i class="fas fa-clock"></i>
+                    <h3>Envío De Pago Contra Entrega</h3>
+                    <p>Entrega el mismo día dentro del área metropolitana</p>
+                </div>
+                <div class="service">
+                    <i class="fas fa-boxes-packing"></i>
+                    <h3>Paquetería</h3>
+                    <p>Manejo de paquetes de todos los tamaños</p>
+                </div>
+                <div class="service">
+                    <i class="fas fa-map-location-dot"></i>
+                    <h3>Rastreo</h3>
+                    <p>Seguimiento en tiempo real de tu envío</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario Same Day -->
+    <section class="same-day-form" id="same-day-form">
+        <div class="container">
+            <h2><i class="fas fa-clock"></i> Envío Pago contra entrega</h2>
+            <form id="same-day-order">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sd-nombre-emisor"><i class="fas fa-user"></i> Nombre del emisor</label>
+                        <input type="text" id="sd-nombre-emisor" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sd-telefono-emisor"><i class="fas fa-phone"></i> Teléfono del emisor</label>
+                        <input type="tel" id="sd-telefono-emisor" placeholder="Ej: 8112345678" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sd-correo-emisor"><i class="fas fa-envelope"></i> Correo del emisor</label>
+                        <input type="email" id="sd-correo-emisor" placeholder="Ej: juan@ejemplo.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sd-origen"><i class="fas fa-location-dot"></i> Dirección completa de origen</label>
+                    <input type="text" id="sd-origen" placeholder="Ej: Calle San Jerónimo 250, Col. Del Valle, San Pedro Garza García" required>
+                    <div class="autocomplete-items" id="sd-origen-results"></div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sd-nombre-receptor"><i class="fas fa-user"></i> Nombre del receptor</label>
+                        <input type="text" id="sd-nombre-receptor" placeholder="Ej: María García" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sd-telefono-receptor"><i class="fas fa-phone"></i> Teléfono del receptor</label>
+                        <input type="tel" id="sd-telefono-receptor" placeholder="Ej: 8187654321" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sd-destino"><i class="fas fa-map-marker-alt"></i> Dirección completa de destino</label>
+                    <input type="text" id="sd-destino" placeholder="Ej: Av. Paseo de los Leones 500, Col. Cumbres, Monterrey" required>
+                    <div class="autocomplete-items" id="sd-destino-results"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sd-descripcion"><i class="fas fa-box-open"></i> Descripción del paquete</label>
+                    <textarea id="sd-descripcion" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sd-hora"><i class="fas fa-clock"></i> Hora límite de entrega</label>
+                    <input type="time" id="sd-hora" required>
+                </div>
+                
+                <div id="map"></div>
+                
+                <div class="form-group" id="sd-cotizacion" style="display: none;">
+                    <h3>Cotización</h3>
+                    <p>Distancia: <span id="sd-distancia">0</span> km</p>
+                    <p>Costo por km: $6.00 MXN</p>
+                    <p><strong>Total: $<span id="sd-total">0.00</span> MXN</strong></p>
+                </div>
+                
+                <button type="button" class="btn" id="calcular-costo">Calcular costo <i class="fas fa-calculator"></i></button>
+                <button type="submit" class="btn" id="confirmar-envio-btn" style="display: none;">Continuar al pago <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sección de pago -->
+    <section class="payment-section" id="payment-section">
+        <div class="container">
+            <h2><i class="fas fa-credit-card"></i> Método de pago</h2>
+            <p>Total a pagar: <strong>$<span id="pago-total">0.00</span> MXN</strong></p>
+            
+            <div class="form-group">
+                <label for="monto-receptor-input"><i class="fas fa-money-bill-wave"></i> Total a pagar por el receptor</label>
+                <input type="number" id="monto-receptor-input" placeholder="Ingrese la cantidad que pagará el receptor" required>
+            </div>
+            
+            <div class="payment-methods">
+                <div class="payment-method" id="spei-method">
+                    <i class="fas fa-money-bill-transfer"></i>
+                    <p>Transferencia SPEI</p>
+                </div>
+            </div>
+            
+            <div class="spei-details" id="spei-details">
+                <h3><i class="fas fa-university"></i> Datos para transferencia</h3>
+                <p>Banco: STP</p>
+                <p>CLABE: 646180146038099441</p>
+                <p>Beneficiario: PaqueteExpress SA de CV</p>
+                <p>Referencia: <strong id="referencia-pago">PKGX-123456</strong></p>
+                <p>Monto que pagará el receptor: $<span id="monto-receptor">0.00</span> MXN</p>
+                
+                <div class="form-group">
+                    <label for="comprobante"><i class="fas fa-file-upload"></i> Subir comprobante</label>
+                    <input type="file" id="comprobante" accept="image/*,.pdf">
+                </div>
+                
+                <button type="button" class="btn" id="confirmar-pago">Confirmar pago <i class="fas fa-check"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticket de confirmación -->
+    <section class="confirmation-ticket" id="confirmation-ticket">
+        <div class="container">
+            <div class="ticket-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <h1>Paquete<span>Express</span></h1>
+                </div>
+                <p><i class="fas fa-calendar-check"></i> Envío confirmado</p>
+            </div>
+            
+            <h2><i class="fas fa-receipt"></i> Recibo de envío</h2>
+            
+            <div class="ticket-details">
+                <div class="ticket-row">
+                    <span>Referencia:</span>
+                    <strong id="ticket-referencia">PKGX-123456</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Fecha y hora:</span>
+                    <strong id="ticket-fecha">31/05/2023 - 15:30</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Emisor:</span>
+                    <strong id="ticket-emisor">Juan Pérez</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Teléfono emisor:</span>
+                    <strong id="ticket-telefono-emisor">8112345678</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Origen:</span>
+                    <strong id="ticket-origen">Calle San Jerónimo 250, Col. Del Valle, San Pedro Garza García</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Receptor:</span>
+                    <strong id="ticket-receptor">María García</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Teléfono receptor:</span>
+                    <strong id="ticket-telefono-receptor">8187654321</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Destino:</span>
+                    <strong id="ticket-destino">Av. Paseo de los Leones 500, Col. Cumbres, Monterrey</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Descripción:</span>
+                    <strong id="ticket-descripcion">Paquete con documentos importantes</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Hora límite:</span>
+                    <strong id="ticket-hora">18:00</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Distancia:</span>
+                    <strong id="ticket-distancia">12.5 km</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Costo total:</span>
+                    <strong id="ticket-costo">$125.00 MXN</strong>
+                </div>
+                <div class="ticket-row">
+                    <span>Monto receptor:</span>
+                    <strong id="ticket-monto-receptor">$125.00 MXN</strong>
+                </div>
+            </div>
+            
+            <div class="ticket-message">
+                <p><i class="fas fa-envelope"></i> <strong>Te enviaremos un correo confirmando tu envío</strong></p>
+                <p>Hemos enviado los detalles a: <span id="ticket-correo">juan@ejemplo.com</span></p>
+            </div>
+            
+            <div class="ticket-actions">
+                <button class="btn" id="imprimir-ticket"><i class="fas fa-print"></i> Imprimir ticket</button>
+                <button class="btn btn-secondary" id="nuevo-envio"><i class="fas fa-plus"></i> Nuevo envío</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-phone"></i> 81 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> contacto@paqueteexpress.com</p>
+                </div>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+ <!-- --- JAVASCRIPT --- -->
+<!-- Google Maps API - Reemplaza TU_API_KEY con tu propia API key -->
+<script src="https://maps.gomaps.pro/maps/api/js?key=AlzaSygCemtbvgF2f40QA9zgxZKYixLuDRZKIbs&libraries=places,directions" async defer></script>>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Base de datos de direcciones en Nuevo León (más completa)
+        const direccionesNL = {
+            "San Pedro Garza García": [
+                "Calle San Jerónimo 250, Col. Del Valle",
+                "Av. Vasconcelos 150, Col. Del Valle",
+                "Av. Gómez Morín 955, Col. Del Valle",
+                "Calle Laguna de Mayrán 245, Col. Del Valle"
+            ],
+            "Monterrey Centro": [
+                "Av. Pino Suárez 450, Col. Centro",
+                "Calle Zaragoza 1300, Col. Centro",
+                "Av. Juárez 1100, Col. Centro",
+                "Calle Washington 200, Col. Centro"
+            ],
+            "Cumbres": [
+                "Av. Paseo de los Leones 500, Col. Cumbres",
+                "Av. Lázaro Cárdenas 2500, Col. Cumbres",
+                "Av. Raúl Salinas 1000, Col. Cumbres Elite",
+                "Calle Sierra Madre 200, Col. Cumbres"
+            ],
+            "San Nicolás de los Garza": [
+                "Av. Universidad 2000, Col. Universitaria",
+                "Calle Ruperto Martínez 500, Col. Centro",
+                "Av. Fidel Velázquez 300, Col. Mitras Centro",
+                "Calle Cuauhtémoc 400, Col. Anáhuac"
+            ],
+            "Apodaca": [
+                "Av. Miguel Alemán 100, Col. Centro",
+                "Av. Concordia 200, Col. Concordia",
+                "Av. Ruiz Cortines 500, Col. Fresnos",
+                "Calle de los Nogales 300, Col. Nogales"
+            ],
+            "Santa Catarina": [
+                "Av. Manuel Ordoñez 500, Col. Centro",
+                "Av. Las Américas 200, Col. Las Américas",
+                "Calle Real de Santa Catarina 100, Col. Real de Santa Catarina",
+                "Av. Eloy Cavazos 300, Col. Villas de San José"
+            ]
+        };
+        
+        // Variables globales para Google Maps
+        let map;
+        let directionsService;
+        let directionsRenderer;
+        let originMarker;
+        let destinationMarker;
+        let autocompleteOrigen;
+        let autocompleteDestino;
+        
+        // 2. Autocompletado para direcciones mejorado
+        function setupAutocomplete(inputElement, resultsElement) {
+            inputElement.addEventListener('input', function() {
+                const input = this.value.toLowerCase();
+                resultsElement.innerHTML = '';
+                
+                if (!input) return;
+                
+                // Buscar en todas las colonias y direcciones
+                const allAddresses = Object.entries(direccionesNL).flatMap(([ciudad, direcciones]) => 
+                    direcciones.map(dir => `${dir}, ${ciudad}`)
+                );
+                
+                const matches = allAddresses.filter(dir => 
+                    dir.toLowerCase().includes(input)
+                );
+                
+                matches.forEach(match => {
+                    const item = document.createElement('div');
+                    item.classList.add('autocomplete-item');
+                    item.textContent = match;
+                    item.addEventListener('click', function() {
+                        inputElement.value = match;
+                        resultsElement.innerHTML = '';
+                    });
+                    resultsElement.appendChild(item);
+                });
+            });
+            
+            // Ocultar al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (e.target !== inputElement) {
+                    resultsElement.innerHTML = '';
+                }
+            });
+        }
+        
+        // 3. Configurar autocompletado para todos los campos
+        setupAutocomplete(document.getElementById('sd-origen'), document.getElementById('sd-origen-results'));
+        setupAutocomplete(document.getElementById('sd-destino'), document.getElementById('sd-destino-results'));
+        
+        // 4. Funcionalidad Same Day
+        const sameDayBtn = document.getElementById('same-day-btn');
+        const sameDayForm = document.getElementById('same-day-form');
+        
+        sameDayBtn.addEventListener('click', function() {
+            // Solo ocultamos la sección de servicios
+            document.querySelector('.services').style.display = 'none';
+            
+            // Mostrar formulario Same Day
+            sameDayForm.style.display = 'block';
+            
+            // Scroll al formulario
+            window.location.href = '#same-day-form';
+            
+            // Inicializar mapa si no existe
+            if (!map) {
+                initMap();
+            }
+        });
+        
+        // Función para mostrar servicios (para el menú de navegación)
+        function showServices() {
+            document.querySelector('.services').style.display = 'block';
+            document.querySelector('.same-day-form').style.display = 'none';
+            document.querySelector('.payment-section').style.display = 'none';
+            document.getElementById('confirmation-ticket').style.display = 'none';
+        }
+        
+        // 5. Inicializar mapa con Google Maps
+        function initMap() {
+            // Configuración inicial del mapa
+            const mapOptions = {
+                center: { lat: 25.6866, lng: -100.3161 }, // Monterrey
+                zoom: 12,
+                mapTypeId: 'roadmap',
+                styles: [
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#444444"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#46bcec"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    }
+                ]
+            };
+            
+            // Crear mapa
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            
+            // Inicializar servicios
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer({
+                map: map,
+                suppressMarkers: true,
+                polylineOptions: {
+                    strokeColor: '#e74c3c',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 4
+                }
+            });
+            
+            // Marcador por defecto (Monterrey)
+            new google.maps.Marker({
+                position: { lat: 25.6866, lng: -100.3161 },
+                map: map,
+                title: 'Monterrey'
+            });
+            
+            // Configurar autocompletado de Google para los campos de dirección
+            autocompleteOrigen = new google.maps.places.Autocomplete(
+                document.getElementById('sd-origen'),
+                {
+                    types: ['address'],
+                    componentRestrictions: {country: 'mx'}
+                }
+            );
+            
+            autocompleteDestino = new google.maps.places.Autocomplete(
+                document.getElementById('sd-destino'),
+                {
+                    types: ['address'],
+                    componentRestrictions: {country: 'mx'}
+                }
+            );
+        }
+        
+        // 6. Calcular ruta y costo
+        document.getElementById('calcular-costo').addEventListener('click', function() {
+            const origen = document.getElementById('sd-origen').value;
+            const destino = document.getElementById('sd-destino').value;
+            
+            if (!origen || !destino) {
+                alert('Por favor ingresa direcciones válidas de Nuevo León');
+                return;
+            }
+            
+            // Configurar solicitud de ruta
+            const request = {
+                origin: origen,
+                destination: destino,
+                travelMode: 'DRIVING',
+                region: 'MX'
+            };
+            
+            // Calcular ruta
+            directionsService.route(request, function(response, status) {
+                if (status === 'OK') {
+                    // Mostrar ruta en el mapa
+                    directionsRenderer.setDirections(response);
+                    
+                    // Obtener distancia
+                    const route = response.routes[0];
+                    let distancia = 0;
+                    
+                    // Sumar la distancia de todos los segmentos
+                    for (let i = 0; i < route.legs.length; i++) {
+                        distancia += route.legs[i].distance.value;
+                    }
+                    
+                    // Convertir a km
+                    distancia = distancia / 1000;
+                    
+                    // Calcular costo ($10 por km)
+                    const costoTotal = (distancia * 6).toFixed(2);
+                    
+                    // Mostrar resultados
+                    document.getElementById('sd-distancia').textContent = distancia.toFixed(1);
+                    document.getElementById('sd-total').textContent = costoTotal;
+                    document.getElementById('sd-cotizacion').style.display = 'block';
+                    document.getElementById('confirmar-envio-btn').style.display = 'inline-block';
+                    
+                    // Agregar marcadores personalizados
+                    addCustomMarkers(response);
+                } else {
+                    alert('No se pudo calcular la ruta. Por favor verifica las direcciones.');
+                }
+            });
+        });
+        
+        // 7. Agregar marcadores personalizados
+        function addCustomMarkers(response) {
+            // Eliminar marcadores anteriores si existen
+            if (originMarker) originMarker.setMap(null);
+            if (destinationMarker) destinationMarker.setMap(null);
+            
+            const origin = response.routes[0].legs[0].start_location;
+            const destination = response.routes[0].legs[0].end_location;
+            
+            // Icono personalizado para origen
+            originMarker = new google.maps.Marker({
+                position: origin,
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 8,
+                    fillColor: '#2ecc71',
+                    fillOpacity: 1,
+                    strokeWeight: 2,
+                    strokeColor: '#ffffff'
+                },
+                title: 'Origen'
+            });
+            
+            // InfoWindow para origen
+            const originInfo = new google.maps.InfoWindow({
+                content: '<strong>Origen:</strong> ' + document.getElementById('sd-origen').value.split(',')[0]
+            });
+            
+            originMarker.addListener('click', function() {
+                originInfo.open(map, originMarker);
+            });
+            originInfo.open(map, originMarker);
+            
+            // Icono personalizado para destino
+            destinationMarker = new google.maps.Marker({
+                position: destination,
+                map: map,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 8,
+                    fillColor: '#e74c3c',
+                    fillOpacity: 1,
+                    strokeWeight: 2,
+                    strokeColor: '#ffffff'
+                },
+                title: 'Destino'
+            });
+            
+            // InfoWindow para destino
+            const destInfo = new google.maps.InfoWindow({
+                content: '<strong>Destino:</strong> ' + document.getElementById('sd-destino').value.split(',')[0]
+            });
+            
+            destinationMarker.addListener('click', function() {
+                destInfo.open(map, destinationMarker);
+            });
+            destInfo.open(map, destinationMarker);
+        }
+        
+        // 8. Proceso de pago
+        document.getElementById('confirmar-envio-btn').addEventListener('click', function() {
+            // Ocultar formulario Same Day
+            sameDayForm.style.display = 'none';
+            
+            // Mostrar sección de pago
+            document.getElementById('payment-section').style.display = 'block';
+            document.getElementById('pago-total').textContent = document.getElementById('sd-total').textContent;
+            
+            // Generar referencia aleatoria
+            const referencia = 'PKGX-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('referencia-pago').textContent = referencia;
+            
+            window.location.href = '#payment-section';
+        });
+
+        // Actualizar monto receptor cuando cambia el input
+        document.getElementById('monto-receptor-input').addEventListener('input', function() {
+            document.getElementById('monto-receptor').textContent = this.value || '0.00';
+        });
+        
+        // 9. Selección de método de pago
+        document.getElementById('spei-method').addEventListener('click', function() {
+            document.getElementById('spei-details').style.display = 'block';
+        });
+        
+        // 10. Confirmar pago
+        document.getElementById('confirmar-pago').addEventListener('click', function() {
+            const montoReceptor = document.getElementById('monto-receptor-input').value;
+            if (!montoReceptor) {
+                alert('Por favor ingresa el monto que pagará el receptor');
+                return;
+            }
+            
+            // Ocultar sección de pago
+            document.getElementById('payment-section').style.display = 'none';
+            
+            // Llenar datos del ticket
+            fillConfirmationTicket(montoReceptor);
+            
+            // Mostrar ticket de confirmación
+            document.getElementById('confirmation-ticket').style.display = 'block';
+            window.location.href = '#confirmation-ticket';
+        });
+        
+        // Función para llenar el ticket de confirmación
+        function fillConfirmationTicket(montoReceptor) {
+            // Obtener valores del formulario
+            const referencia = document.getElementById('referencia-pago').textContent;
+            const now = new Date();
+            const fecha = now.toLocaleDateString('es-MX');
+            const hora = now.toLocaleTimeString('es-MX', {hour: '2-digit', minute:'2-digit'});
+            
+            // Llenar datos en el ticket
+            document.getElementById('ticket-referencia').textContent = referencia;
+            document.getElementById('ticket-fecha').textContent = `${fecha} - ${hora}`;
+            document.getElementById('ticket-emisor').textContent = document.getElementById('sd-nombre-emisor').value;
+            document.getElementById('ticket-telefono-emisor').textContent = document.getElementById('sd-telefono-emisor').value;
+            document.getElementById('ticket-origen').textContent = document.getElementById('sd-origen').value;
+            document.getElementById('ticket-receptor').textContent = document.getElementById('sd-nombre-receptor').value;
+            document.getElementById('ticket-telefono-receptor').textContent = document.getElementById('sd-telefono-receptor').value;
+            document.getElementById('ticket-destino').textContent = document.getElementById('sd-destino').value;
+            document.getElementById('ticket-descripcion').textContent = document.getElementById('sd-descripcion').value;
+            document.getElementById('ticket-hora').textContent = document.getElementById('sd-hora').value;
+            document.getElementById('ticket-distancia').textContent = document.getElementById('sd-distancia').textContent + ' km';
+            document.getElementById('ticket-costo').textContent = '$' + document.getElementById('sd-total').textContent + ' MXN';
+            document.getElementById('ticket-monto-receptor').textContent = '$' + montoReceptor + ' MXN';
+            document.getElementById('ticket-correo').textContent = document.getElementById('sd-correo-emisor').value;
+        }
+        
+        // 11. Funcionalidad de los botones del ticket
+        document.getElementById('imprimir-ticket').addEventListener('click', function() {
+            window.print(); // Imprimir la página
+        });
+
+        document.getElementById('nuevo-envio').addEventListener('click', function() {
+            // Ocultar ticket
+            document.getElementById('confirmation-ticket').style.display = 'none';
+            
+            // Mostrar servicios
+            showServices();
+            
+            // Resetear formulario
+            document.getElementById('same-day-order').reset();
+            document.getElementById('sd-cotizacion').style.display = 'none';
+            document.getElementById('confirmar-envio-btn').style.display = 'none';
+            
+            // Resetear mapa
+            if (directionsRenderer) {
+                directionsRenderer.setMap(null);
+            }
+            if (originMarker) originMarker.setMap(null);
+            if (destinationMarker) destinationMarker.setMap(null);
+            
+            // Centrar mapa nuevamente
+            if (map) {
+                map.setCenter({ lat: 25.6866, lng: -100.3161 });
+                map.setZoom(12);
+            }
+            
+            // Scroll a servicios
+            window.location.href = '#servicios';
+        });
+        
+        // 12. Smooth scrolling y navegación
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Comportamiento normal para los enlaces del menú
+                if (this.getAttribute('href') === '#servicios') {
+                    showServices();
+                }
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
